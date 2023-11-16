@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// An asynchronous function to retrieve user information
 const getUserById = async (userId) => {
   if (userId === null || userId === undefined) {
     throw new Error("User id not defined");
@@ -14,6 +15,7 @@ const getUserById = async (userId) => {
     throw error;
   }
 };
+// An asynchronous function to retrieve posts of a specific user
 const getPostByUserId = async (userId) => {
   if (userId === null || userId === undefined) {
     throw new Error("User id not defined");
@@ -28,12 +30,13 @@ const getPostByUserId = async (userId) => {
     throw error;
   }
 };
-
+// Asynchronous function that combines user information and posts and returns
 export const getUserAndPost = async (userId) => {
   try {
     const user = await getUserById(userId);
     const posts = await getPostByUserId(userId);
 
+    // Combine and return user information and posts
     const result = {
       user,
       posts: posts,
